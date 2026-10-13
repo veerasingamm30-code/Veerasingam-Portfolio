@@ -77,6 +77,14 @@
         </defs>
       </svg>
 
+      <!-- Clock A: live India date + time (script.js section 10) -->
+      <div class="ist-clock ist-clock-lg" data-ist-clock role="timer" aria-label="Current date and time in India">
+        <span class="ist-clock-label">India &middot; IST</span>
+        <span class="ist-clock-hourglass" aria-hidden="true">⌛</span>
+        <span class="ist-clock-time" data-ist-time>--:--:--</span>
+        <span class="ist-clock-date" data-ist-date>Loading&hellip;</span>
+      </div>
+
       <div class="hero-content">
         <!-- Profile picture (assets/profile.jpg), framed in a glowing ring
              to match the site's neon glass identity -->
@@ -100,7 +108,8 @@
         <div class="hero-cta">
           <a href="#projects" class="btn btn-primary">View My Work</a>
           <!-- download attribute forces a file download instead of opening in-browser -->
-          <a href="assets/Veerasingam_Resume.pdf" class="btn btn-ghost" download="Veerasingam_Resume.pdf">Download Resume</a>
+          <a href="Veerasingam_Resume.pdf" class="btn btn-ghost" download="Veerasingam_Resume.pdf">Download Resume</a>
+          <a href="Veerasingam_Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">View Resume</a>
           <a href="#contact" class="btn btn-ghost">Get In Touch</a>
         </div>
       </div>
@@ -119,23 +128,31 @@
 
       <div class="about-grid">
         <div class="glass-card about-text">
-          <p>
-            I'm Veerasingam. I'm in my final year of
-            B.Sc. Computer Science at Swami Dayananda College, and I'm chasing
-            one goal right now: my first developer role, as a Web Developer or
-            Full Stack Developer fresher.
-          </p>
-          <p>
-            I don't copy-paste code to learn — I type every line myself, break
-            it, fix it, and understand why it works. That habit is slower, but
-            it's the reason I can actually build things like this portfolio
-            site from scratch instead of just following along.
-          </p>
-          <p>
-            Outside of code, anime shapes a lot of how I think about design —
-            bold characters, clean composition, a story worth telling. That's
-            where "Play Bold" comes from.
-          </p>
+          <div class="about-block">
+            <span class="about-block-label">Right now</span>
+            <p class="about-lead">
+              I'm Veerasingam, a final-year B.Sc. Computer Science student at
+              Swami Dayananda College of Arts and Science, and I'm chasing one goal:
+              my first developer role, as a Web Developer or Full Stack Developer fresher.
+            </p>
+          </div>
+          <div class="about-block">
+            <span class="about-block-label">How I learn</span>
+            <p>
+              I don't copy-paste code to learn &mdash; I type every line myself, break
+              it, fix it, and understand why it works. That habit is slower, but
+              it's the reason I can actually build things like this portfolio
+              site from scratch instead of just following along.
+            </p>
+          </div>
+          <div class="about-block">
+            <span class="about-block-label">Why &ldquo;Play Bold&rdquo;</span>
+            <p>
+              Outside of code, anime shapes a lot of how I think about design &mdash;
+              bold characters, clean composition, a story worth telling. That's
+              where &ldquo;Play Bold&rdquo; comes from.
+            </p>
+          </div>
         </div>
 
         <div class="about-facts">
@@ -155,8 +172,29 @@
             <span class="fact-label">Learning Style</span>
             <span class="fact-value">Hands-on, project-first, manual typing</span>
           </div>
+          <div class="glass-card fact-card languages-card">
+            <span class="fact-label">Languages</span>
+            <ul class="language-list">
+              <li>Tamil (Native)</li>
+              <li>English (Professional Working)</li>
+            </ul>
+          </div>
         </div>
       </div>
+
+      <aside class="glass-card motivation-card" aria-label="Motivation">
+        <div class="motivation-grid">
+          <div>
+            <h3 class="motivation-title">🔥 Build. Learn. Improve. Repeat.</h3>
+            <p>Every project you complete is another step toward the developer you want to become.</p>
+          </div>
+          <div>
+            <h3 class="motivation-title">🚀 Small Steps. Big Goals.</h3>
+            <p>Write the code. Solve the problem. Learn from the mistake. Keep moving forward.</p>
+          </div>
+        </div>
+        <p class="motivation-tag">🦁 Play Bold. Stay Curious. Keep Building.</p>
+      </aside>
     </section>
 
     <!-- ===================================================================
@@ -174,146 +212,201 @@
         <div class="glass-card skill-group">
           <h3 class="skill-group-title">Frontend</h3>
 
-          <div class="skill-bar" data-level="85">
+          <div class="skill-bar" data-level="86">
             <div class="skill-bar-top">
               <span class="skill-name">HTML</span>
-              <span class="skill-percent">0%</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
             </div>
-            <div class="skill-track"><div class="skill-fill"></div></div>
+            <div class="skill-track" role="progressbar" aria-label="HTML" aria-valuemin="0" aria-valuemax="100" aria-valuenow="86"><div class="skill-fill"></div></div>
+          </div>
+
+          <div class="skill-bar" data-level="84">
+            <div class="skill-bar-top">
+              <span class="skill-name">CSS</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-label="CSS" aria-valuemin="0" aria-valuemax="100" aria-valuenow="84"><div class="skill-fill"></div></div>
           </div>
 
           <div class="skill-bar" data-level="80">
             <div class="skill-bar-top">
-              <span class="skill-name">CSS</span>
-              <span class="skill-percent">0%</span>
-            </div>
-            <div class="skill-track"><div class="skill-fill"></div></div>
-          </div>
-
-          <div class="skill-bar" data-level="70">
-            <div class="skill-bar-top">
               <span class="skill-name">JavaScript</span>
-              <span class="skill-percent">0%</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
             </div>
-            <div class="skill-track"><div class="skill-fill"></div></div>
+            <div class="skill-track" role="progressbar" aria-label="JavaScript" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="skill-fill"></div></div>
           </div>
 
-          <div class="skill-bar" data-level="65">
+          <div class="skill-bar" data-level="72">
+            <div class="skill-bar-top">
+              <span class="skill-name">React.js</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-label="React.js" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72"><div class="skill-fill"></div></div>
+          </div>
+
+          <div class="skill-bar" data-level="78">
             <div class="skill-bar-top">
               <span class="skill-name">Bootstrap</span>
-              <span class="skill-percent">0%</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
             </div>
-            <div class="skill-track"><div class="skill-fill"></div></div>
-          </div>
-
-          <div class="skill-bar" data-level="45">
-            <div class="skill-bar-top">
-              <span class="skill-name">React.js <span class="tag-learning">learning</span></span>
-              <span class="skill-percent">0%</span>
-            </div>
-            <div class="skill-track"><div class="skill-fill"></div></div>
+            <div class="skill-track" role="progressbar" aria-label="Bootstrap" aria-valuemin="0" aria-valuemax="100" aria-valuenow="78"><div class="skill-fill"></div></div>
           </div>
         </div>
 
         <div class="glass-card skill-group">
-          <h3 class="skill-group-title">Backend &amp; Database</h3>
+          <h3 class="skill-group-title">Backend</h3>
 
-          <div class="skill-bar" data-level="40">
+          <div class="skill-bar" data-level="76">
             <div class="skill-bar-top">
-              <span class="skill-name">Node.js <span class="tag-learning">learning</span></span>
-              <span class="skill-percent">0%</span>
+              <span class="skill-name">Node.js</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
             </div>
-            <div class="skill-track"><div class="skill-fill"></div></div>
+            <div class="skill-track" role="progressbar" aria-label="Node.js" aria-valuemin="0" aria-valuemax="100" aria-valuenow="76"><div class="skill-fill"></div></div>
           </div>
 
-          <div class="skill-bar" data-level="35">
+          <div class="skill-bar" data-level="74">
             <div class="skill-bar-top">
-              <span class="skill-name">Express.js <span class="tag-learning">learning</span></span>
-              <span class="skill-percent">0%</span>
+              <span class="skill-name">Express.js</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
             </div>
-            <div class="skill-track"><div class="skill-fill"></div></div>
+            <div class="skill-track" role="progressbar" aria-label="Express.js" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74"><div class="skill-fill"></div></div>
           </div>
 
-          <div class="skill-bar" data-level="35">
+          <div class="skill-bar" data-level="68">
             <div class="skill-bar-top">
-              <span class="skill-name">MongoDB <span class="tag-learning">learning</span></span>
-              <span class="skill-percent">0%</span>
+              <span class="skill-name">PHP</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
             </div>
-            <div class="skill-track"><div class="skill-fill"></div></div>
+            <div class="skill-track" role="progressbar" aria-label="PHP" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68"><div class="skill-fill"></div></div>
           </div>
 
-          <h3 class="skill-group-title skill-group-title-spaced">Tools</h3>
+          <div class="skill-bar" data-level="66">
+            <div class="skill-bar-top">
+              <span class="skill-name">Python <span class="tag-learning">Learning</span></span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-label="Python" aria-valuemin="0" aria-valuemax="100" aria-valuenow="66" aria-valuetext="66%, learning"><div class="skill-fill"></div></div>
+          </div>
+        </div>
+
+        <div class="glass-card skill-group">
+          <h3 class="skill-group-title">Databases</h3>
+
+          <div class="skill-bar" data-level="64">
+            <div class="skill-bar-top">
+              <span class="skill-name">MySQL</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-label="MySQL" aria-valuemin="0" aria-valuemax="100" aria-valuenow="64"><div class="skill-fill"></div></div>
+          </div>
+
+          <div class="skill-bar" data-level="82">
+            <div class="skill-bar-top">
+              <span class="skill-name">MongoDB</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-label="MongoDB" aria-valuemin="0" aria-valuemax="100" aria-valuenow="82"><div class="skill-fill"></div></div>
+          </div>
 
           <div class="skill-bar" data-level="70">
             <div class="skill-bar-top">
-              <span class="skill-name">Git &amp; GitHub</span>
-              <span class="skill-percent">0%</span>
+              <span class="skill-name">MariaDB</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
             </div>
-            <div class="skill-track"><div class="skill-fill"></div></div>
+            <div class="skill-track" role="progressbar" aria-label="MariaDB" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><div class="skill-fill"></div></div>
+          </div>
+        </div>
+
+        <div class="glass-card skill-group">
+          <h3 class="skill-group-title">Programming and Tools</h3>
+
+          <div class="skill-basic">
+            <span class="skill-name">C</span>
+            <span class="skill-level-tag">Basics</span>
+          </div>
+          <div class="skill-basic">
+            <span class="skill-name">Java</span>
+            <span class="skill-level-tag">Basics</span>
           </div>
 
-          <div class="skill-bar" data-level="60">
+          <div class="skill-bar" data-level="88">
             <div class="skill-bar-top">
-              <span class="skill-name">Python</span>
-              <span class="skill-percent">0%</span>
+              <span class="skill-name">GitHub</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
             </div>
-            <div class="skill-track"><div class="skill-fill"></div></div>
+            <div class="skill-track" role="progressbar" aria-label="GitHub" aria-valuemin="0" aria-valuemax="100" aria-valuenow="88"><div class="skill-fill"></div></div>
+          </div>
+
+          <div class="skill-bar" data-level="90">
+            <div class="skill-bar-top">
+              <span class="skill-name">VS Code</span>
+              <span class="skill-percent" aria-hidden="true">0%</span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-label="VS Code" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90"><div class="skill-fill"></div></div>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- PROJECTS SECTION — UPDATED 3-PROJECT SHOWCASE -->
+    <!-- ===================================================================
+         PROJECTS SECTION
+         Only projects backed by supplied screenshots / project files are shown.
+         Screenshots live in assets/projects/ (WebP, original aspect ratio).
+    ==================================================================== -->
     <section id="projects" class="section projects">
       <p class="section-label">03 / Projects</p>
       <h2 class="section-title">Built, not just tutorial-followed</h2>
-      <p class="projects-intro">Three real projects that show how I turn ideas into usable web experiences.</p>
+      <p class="projects-intro">Real projects that show how I turn ideas into usable web experiences.</p>
 
-      <article class="project-card project-card-featured glass-card project-theme-anime" data-tilt>
-        <div class="project-visual project-visual-anime" aria-label="AnimeHaven project concept preview">
-          <span class="project-number">01</span><span class="project-concept-label">PROJECT CONCEPT</span>
-          <div class="anime-ui-shell">
-            <div class="anime-ui-topbar"><span class="mini-brand">AnimeHaven</span><span class="mini-search">⌕ Search anime...</span><span class="mini-dot"></span></div>
-            <div class="anime-ui-hero"><div><span class="mini-kicker">DISCOVER • EXPLORE • WATCH</span><strong>Find your next<br>favorite anime.</strong></div><span class="mini-orbit">✦</span></div>
-            <div class="anime-ui-row"><div class="mini-content-card"><span class="mini-poster poster-a"></span><span>Trending</span></div><div class="mini-content-card"><span class="mini-poster poster-b"></span><span>Top Anime</span></div><div class="mini-content-card"><span class="mini-poster poster-c"></span><span>Genres</span></div></div>
-          </div>
+      <article class="project-card project-card-featured glass-card project-theme-aptitude" data-tilt>
+        <div class="project-visual project-visual-shot">
+          <span class="project-number">01</span><span class="project-concept-label">SCREENSHOT</span>
+          <img class="project-shot" src="assets/projects/aptix.webp" width="1342" height="626" loading="lazy" decoding="async"
+               alt="Screenshot of the AptiX home page: the headline &quot;Master Aptitude. Crack Your Placement.&quot;, Mock Test, Track Progress and Get Placed cards, and statistics showing 571 verified practice questions and 6 companies.">
         </div>
         <div class="project-info">
-          <div class="project-meta-row"><span class="project-category">Anime Recommendation &amp; Discovery Platform</span><span class="project-status status-anime">In Development</span></div>
-          <h3 class="project-title">AnimeHaven</h3><p class="project-subtitle">Main / Current Project</p>
-          <p class="project-desc">AnimeHaven is a modern anime discovery and recommendation platform designed to help users discover anime through search, categories, trending content, ratings, watchlists, and personalized exploration.</p>
-          <ul class="project-features"><li>Anime discovery, recommendations, and personalized exploration</li><li>Global search, trending, top anime, ongoing titles, and genre exploration</li><li>Anime series, anime movies, and manga discovery</li><li>Anime details, ratings, reviews, watchlist, and watch history concepts</li></ul>
-          <div class="project-stack"><span class="stack-chip">PHP</span><span class="stack-chip">MySQL</span><span class="stack-chip">HTML</span><span class="stack-chip">CSS</span><span class="stack-chip">JavaScript</span><span class="stack-chip">XAMPP</span></div>
+          <div class="project-meta-row"><span class="project-category">Aptitude Practice &amp; Placement Preparation Platform</span></div>
+          <h3 class="project-title">AptiX</h3><p class="project-subtitle">Master Aptitude. Crack Your Placement.</p>
+          <p class="project-desc">AptiX is an aptitude practice platform for placement preparation, built around company-specific questions, timed mock tests, personalised insights, and progress tracking.</p>
+          <ul class="project-features"><li>571 verified practice questions</li><li>6 companies with pattern practice</li><li>Timed, exam-style mock tests</li><li>Progress tracking built from your own attempts</li></ul>
+          <div class="project-tech-groups">
+            <div><span class="tech-group-label">Frontend (provided stack — verification pending)</span><div class="project-stack"><span class="stack-chip">HTML5</span><span class="stack-chip">Tailwind CSS</span><span class="stack-chip">JavaScript</span><span class="stack-chip">Bootstrap</span><span class="stack-chip">React</span></div></div>
+            <div><span class="tech-group-label">Backend (provided stack — verification pending)</span><div class="project-stack"><span class="stack-chip">Express.js</span><span class="stack-chip">Node.js</span></div></div>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm project-details-btn" data-project-details="aptix" aria-haspopup="dialog" aria-label="View project: AptiX">View Project ↗</button>
         </div>
       </article>
 
-      <article class="project-card project-card-secondary glass-card project-theme-aptitude" data-tilt>
-        <div class="project-visual project-visual-aptitude" aria-label="Crack Aptitude project concept preview">
-          <span class="project-number">02</span><span class="project-concept-label">PROJECT CONCEPT</span>
-          <div class="aptitude-ui-shell"><div class="aptitude-header"><span class="mini-brand">Crack Aptitude</span><span class="mini-progress">Practice</span></div><div class="aptitude-score"><span class="score-ring">?</span><div><span class="mini-kicker">APTITUDE PRACTICE</span><strong>Choose your challenge.</strong></div></div><div class="aptitude-options"><span>Quantitative</span><span>Logical Reasoning</span><span>Problem Solving</span></div><div class="aptitude-question"><span class="question-line"></span><span class="question-line short"></span><div class="answer-grid"><span>A</span><span>B</span><span>C</span><span>D</span></div></div></div>
+      <article class="project-card project-card-secondary glass-card project-theme-expense" data-tilt>
+        <div class="project-visual project-visual-shot">
+          <span class="project-number">02</span><span class="project-concept-label">SCREENSHOT</span>
+          <img class="project-shot" src="assets/projects/expensex.webp" width="1342" height="626" loading="lazy" decoding="async"
+               alt="Screenshot of the ExpenseX dashboard: a sidebar menu, Total Balance, Total Income, Total Expenses and Net Savings cards, an Income vs Expenses chart, and a Budget Status panel.">
         </div>
         <div class="project-info">
-          <div class="project-meta-row"><span class="project-category">Aptitude Practice &amp; Placement Preparation Platform</span><span class="project-status status-aptitude">In Development</span></div>
-          <h3 class="project-title">Crack Aptitude</h3><p class="project-subtitle">Practice-focused learning project</p>
-          <p class="project-desc">Crack Aptitude is an aptitude practice website designed to help IT students and freshers strengthen quantitative aptitude, logical reasoning, and problem-solving skills for placement preparation.</p>
-          <ul class="project-features"><li>Aptitude practice and structured practice sessions</li><li>Quantitative aptitude and logical reasoning</li><li>Beginner-friendly problem-solving practice</li><li>Placement and interview preparation focus</li></ul>
-          <div class="project-stack"><span class="stack-chip">PHP</span><span class="stack-chip">MySQL</span><span class="stack-chip">HTML</span><span class="stack-chip">CSS</span><span class="stack-chip">JavaScript</span></div>
+          <div class="project-meta-row"><span class="project-category">Personal Finance &amp; Expense Tracker</span></div>
+          <h3 class="project-title">ExpenseX</h3><p class="project-subtitle">Expense tracking dashboard</p>
+          <p class="project-desc">ExpenseX is a personal finance dashboard for tracking income and expenses, with budgets, savings goals, subscriptions, and recurring payments.</p>
+          <ul class="project-features"><li>Dashboard with balance, income, expenses, and net savings</li><li>Income vs Expenses chart and budget status</li><li>Transactions, savings goals, subscriptions, and recurring payments</li><li>Analytics and notifications</li></ul>
+          <div class="project-tech-groups"><div><span class="tech-group-label">Frontend (provided stack — verification pending)</span><div class="project-stack"><span class="stack-chip">HTML5</span><span class="stack-chip">Tailwind CSS</span><span class="stack-chip">JavaScript</span></div></div><div><span class="tech-group-label">Backend (provided stack — verification pending)</span><div class="project-stack"><span class="stack-chip">PHP</span><span class="stack-chip">MySQL</span></div></div></div>
+          <button type="button" class="btn btn-primary btn-sm project-details-btn" data-project-details="expensex" aria-haspopup="dialog" aria-label="View project: ExpenseX">View Project ↗</button>
         </div>
       </article>
 
       <article class="project-card project-card-secondary glass-card project-theme-portfolio" data-tilt>
-        <div class="project-visual project-visual-portfolio" aria-label="Personal portfolio project preview">
-          <span class="project-number">03</span><span class="project-concept-label">PROJECT PREVIEW</span>
-          <div class="portfolio-ui-shell"><div class="portfolio-window-top"><span></span><span></span><span></span></div><div class="portfolio-window-body"><div class="portfolio-avatar-mini">VM</div><div class="portfolio-lines"><span class="line-lg"></span><span class="line-md"></span><span class="line-sm"></span></div><div class="portfolio-pill-row"><span>About</span><span>Skills</span><span>Projects</span></div></div></div>
+        <div class="project-visual project-visual-shot">
+          <span class="project-number">03</span><span class="project-concept-label">SCREENSHOT</span>
+          <img class="project-shot" src="assets/projects/portfolio.webp" width="1332" height="632" loading="lazy" decoding="async"
+               alt="Screenshot of this portfolio's home section: a round profile photo, the name Veerasingam M, the tagline Aspiring Full Stack Developer, and the animated particle background.">
         </div>
         <div class="project-info">
           <div class="project-meta-row"><span class="project-category">Personal Developer Portfolio</span><span class="project-status status-portfolio">Existing</span></div>
           <h3 class="project-title">Personal Portfolio Website</h3><p class="project-subtitle">This website</p>
           <p class="project-desc">Built a fully responsive personal portfolio website with a modern glassmorphism interface.</p>
           <ul class="project-features"><li>Dark / Light Mode</li><li>Particle Background</li><li>Typing Animation</li><li>Custom Cursor</li><li>Scroll Spy</li><li>Responsive Design</li><li>Interactive UI</li></ul>
-          <div class="project-stack"><span class="stack-chip">HTML</span><span class="stack-chip">CSS</span><span class="stack-chip">JavaScript</span></div>
-          <div class="project-links"><a href="https://github.com/veerasingamm30-code" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub</a></div>
+          <div class="project-tech-groups"><div><span class="tech-group-label">Frontend</span><div class="project-stack"><span class="stack-chip">HTML5</span><span class="stack-chip">CSS3</span><span class="stack-chip">JavaScript</span></div></div></div>
+          <div class="project-links"><a href="https://github.com/veerasingamm30-code" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">GitHub Profile</a><button type="button" class="btn btn-primary btn-sm project-details-btn" data-project-details="portfolio" aria-haspopup="dialog" aria-label="View project: Personal Portfolio Website">View Project ↗</button></div>
         </div>
       </article>
     </section>
@@ -331,6 +424,8 @@
           <h3 class="edu-degree">B.Sc. Computer Science</h3>
           <p class="edu-school">Swami Dayananda College, Manjakkudi, Thiruvarur, Tamil Nadu</p>
           <p class="edu-status">Final Year — Expected Graduation 2027</p>
+          <button type="button" class="btn btn-ghost btn-sm education-details-toggle" aria-expanded="false" aria-controls="education-more-details">More Details</button>
+          <div id="education-more-details" class="education-more-details" hidden><p><strong>Qualification:</strong> B.Sc. Computer Science</p><p><strong>Institution:</strong> Swami Dayananda College, Manjakkudi, Thiruvarur, Tamil Nadu</p><p><strong>Status:</strong> Final year; expected graduation 2027.</p><p class="details-note">Only the education details already present in this portfolio are shown.</p></div>
         </div>
       </div>
     </section>
@@ -341,23 +436,46 @@
     <section id="contact" class="section contact">
       <p class="section-label">05 / Contact</p>
       <h2 class="section-title">Let's build something</h2>
-      <p class="contact-sub">Hiring for a fresher role, or just want to talk code? My inbox is open.</p>
+      <p class="contact-sub">Hiring for a fresher role, or just want to talk code? Message me on WhatsApp or send an email.</p>
+
+      <!-- Clock B: smaller live India date + time (script.js section 10) -->
+      <div class="ist-clock ist-clock-sm" data-ist-clock role="timer" aria-label="Current date and time in India">
+        <span class="ist-clock-label">India &middot; IST</span>
+        <span class="ist-clock-hourglass" aria-hidden="true">⌛</span>
+        <span class="ist-clock-time" data-ist-time>--:--:--</span>
+        <span class="ist-clock-date" data-ist-date>Loading&hellip;</span>
+      </div>
 
       <div class="contact-grid">
-        <div class="glass-card contact-info">
-          <a href="mailto:veerasingamm30@gmail.com" class="contact-line">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">veerasingamm30@gmail.com</span>
+        <div class="contact-actions">
+          <a href="https://wa.me/918807872577?text=Hi%20Veera%20%F0%9F%A4%97%F0%9F%91%8B!%20I%20visited%20your%20Portfolio%20and%20would%20like%20to%20contact%20with%20you." class="contact-card contact-card-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp. Opens WhatsApp with a message ready to edit and send.">
+            <span class="contact-card-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
+            <span class="contact-card-text"><span class="contact-card-label">Instant chat</span><span class="contact-card-value">Chat on WhatsApp</span></span>
+            <span class="contact-card-arrow" aria-hidden="true">↗</span>
           </a>
+          <a href="mailto:veerasingamm30@gmail.com?subject=Portfolio%20enquiry" class="contact-card contact-card-email" data-email-card data-email-to="veerasingamm30@gmail.com" data-email-subject="Portfolio enquiry" aria-label="Email me at veerasingamm30@gmail.com">
+            <span class="contact-card-icon contact-card-emoji" aria-hidden="true">✉️</span>
+            <span class="contact-card-text"><span class="contact-card-label">Email Me</span><span class="contact-card-value">veerasingamm30@gmail.com</span></span>
+            <span class="contact-card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="contact-alt">
+            <a class="contact-alt-link" href="mailto:veerasingamm30@gmail.com?subject=Portfolio%20enquiry">Open in mail app</a>
+            <button type="button" class="contact-alt-link" data-copy-email="veerasingamm30@gmail.com">Copy address</button>
+            <span class="contact-alt-status" role="status" aria-live="polite" data-copy-status></span>
+          </div>
+          <p class="contact-note">WhatsApp opens with a message ready for you to review and edit. You press Send yourself.</p>
+        </div>
+
+        <div class="glass-card contact-info">
           <a href="tel:+918807872577" class="contact-line">
             <span class="contact-label">Phone</span>
             <span class="contact-value">+91 88078 72577</span>
           </a>
-          <a href="https://github.com/veerasingamm30-code" target="_blank" rel="noopener" class="contact-line">
+          <a href="https://github.com/veerasingamm30-code" target="_blank" rel="noopener noreferrer" class="contact-line">
             <span class="contact-label">GitHub</span>
             <span class="contact-value">github.com/veerasingamm30-code</span>
           </a>
-          <a href="assets/Veerasingam_Resume.pdf" class="contact-line" download="Veerasingam_Resume.pdf">
+          <a href="Veerasingam_Resume.pdf" class="contact-line" download="Veerasingam_Resume.pdf">
             <span class="contact-label">Resume</span>
             <span class="contact-value">Download PDF</span>
           </a>
@@ -366,23 +484,6 @@
             <span class="contact-value">Kumbakonam, Tamil Nadu, India</span>
           </div>
         </div>
-
-        <!-- Note: this form has no backend yet. script.js just shows a
-             success message on submit. Connect it to a service like
-             Formspree, EmailJS, or your own backend when ready. -->
-        <form class="glass-card contact-form" id="contact-form">
-          <label class="form-label" for="name">Name</label>
-          <input class="form-input" type="text" id="name" name="name" required placeholder="Your name">
-
-          <label class="form-label" for="email">Email</label>
-          <input class="form-input" type="email" id="email" name="email" required placeholder="you@example.com">
-
-          <label class="form-label" for="message">Message</label>
-          <textarea class="form-input" id="message" name="message" rows="4" required placeholder="What are you building?"></textarea>
-
-          <button type="submit" class="btn btn-primary form-submit">Send Message</button>
-          <p class="form-status" id="form-status" role="status"></p>
-        </form>
       </div>
     </section>
 
@@ -399,9 +500,31 @@
       </defs>
     </svg>
     <p class="footer-text">Veerasingam M — Lion King Veerasingam. Play Bold.</p>
+    <p class="footer-url"><span aria-hidden="true">🦁</span> <a href="https://veerasingamm30-code.github.io/Veerasingam.Portfolio" target="_blank" rel="noopener noreferrer">veerasingamm30-code.github.io/Veerasingam.Portfolio</a></p>
     <p class="footer-year">&copy; <span id="footer-year"></span></p>
   </footer>
 
+  <dialog class="project-details-dialog" id="project-details-dialog" aria-labelledby="project-dialog-title" aria-describedby="project-dialog-desc">
+    <button type="button" class="dialog-close" aria-label="Close project details">×</button>
+    <div class="project-dialog-content">
+      <figure class="project-dialog-figure" id="project-dialog-figure">
+        <a id="project-dialog-imglink" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size project screenshot in a new tab">
+          <img id="project-dialog-img" src="" alt="" decoding="async">
+        </a>
+        <figcaption>Tap or click the image to open it full size ↗</figcaption>
+      </figure>
+      <p class="project-dialog-missing" id="project-dialog-missing" hidden>Preview image is not available for this project.</p>
+      <p class="section-label" id="project-dialog-category"></p>
+      <h2 id="project-dialog-title">Project</h2>
+      <p class="project-dialog-desc" id="project-dialog-desc"></p>
+      <div id="project-dialog-features-wrap">
+        <h3 class="project-dialog-heading">Features</h3>
+        <ul class="project-dialog-features" id="project-dialog-features"></ul>
+      </div>
+      <div id="project-dialog-tech"></div>
+      <div class="project-dialog-links" id="project-dialog-links"></div>
+    </div>
+  </dialog>
   <script src="script.js"></script>
 </body>
 </html>

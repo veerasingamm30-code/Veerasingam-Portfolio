@@ -8,8 +8,9 @@
    5. Navbar: scroll background + mobile menu
    6. Scroll-spy (highlight active nav link)
    7. Animated skill bars (IntersectionObserver)
-   8. Contact form (front-end only demo)
+   8. Education details + project details modal
    9. Footer year
+   10. Live India clocks
    ===================================================================== */
 
 // Run everything once the HTML is fully parsed
@@ -333,20 +334,172 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* -------------------------------------------------------------------
-     8. CONTACT FORM (front-end only)
-     There's no backend wired up yet. This just prevents the default
-     page reload and shows a confirmation message. Swap this out for
-     a real API call (e.g. Formspree, EmailJS) when ready.
+     8. EDUCATION DETAILS + PROJECT DETAILS
   ------------------------------------------------------------------- */
-  const contactForm = document.getElementById('contact-form');
-  const formStatus = document.getElementById('form-status');
+  const educationToggle = document.querySelector('.education-details-toggle');
+  const educationDetails = document.getElementById('education-more-details');
+  if (educationToggle && educationDetails) {
+    educationToggle.addEventListener('click', () => {
+      const expanded = educationToggle.getAttribute('aria-expanded') === 'true';
+      educationToggle.setAttribute('aria-expanded', String(!expanded));
+      educationDetails.hidden = expanded;
+      educationToggle.textContent = expanded ? 'More Details' : 'Hide Details';
+    });
+  }
 
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formStatus.textContent = "Thanks! I'll get back to you soon — or email me directly anytime.";
-    contactForm.reset();
-  });
+  /* Project details modal.
+     Everything shown is read from the clicked project card, so the modal can
+     never show a different project's image, text, stack or links. Links appear
+     only if the card really contains one. */
+  const projectDialog = document.getElementById('project-details-dialog');
+  if (projectDialog) {
+    const $ = id => document.getElementById(id);
+    const dlg = {
+      figure: $('project-dialog-figure'), imgLink: $('project-dialog-imglink'), img: $('project-dialog-img'),
+      missing: $('project-dialog-missing'), category: $('project-dialog-category'), title: $('project-dialog-title'),
+      desc: $('project-dialog-desc'), featuresWrap: $('project-dialog-features-wrap'), features: $('project-dialog-features'),
+      tech: $('project-dialog-tech'), links: $('project-dialog-links')
+    };
+    let lastTrigger = null;
 
+    const showMissingPreview = () => { dlg.figure.hidden = true; dlg.missing.hidden = false; };
+    dlg.img.addEventListener('error', showMissingPreview);
+
+    function fillProjectDialog(card) {
+      const text = sel => { const el = card.querySelector(sel); return el ? el.textContent.trim() : ''; };
+      dlg.title.textContent = text('.project-title');
+      dlg.category.textContent = text('.project-category');
+      dlg.desc.textContent = text('.project-desc');
+
+      // Preview image (the card's own screenshot)
+      const shot = card.querySelector('.project-shot');
+      dlg.figure.hidden = false;
+      dlg.missing.hidden = true;
+      if (shot && shot.getAttribute('src')) {
+        const src = shot.getAttribute('src');
+        dlg.img.src = src;
+        dlg.img.alt = shot.getAttribute('alt') || ('Screenshot of ' + dlg.title.textContent);
+        if (shot.width) dlg.img.width = shot.getAttribute('width');
+        if (shot.height) dlg.img.height = shot.getAttribute('height');
+        dlg.imgLink.href = src;
+      } else {
+        dlg.img.removeAttribute('src');
+        showMissingPreview();
+      }
+
+      // Features (only those already listed on the card)
+      dlg.features.replaceChildren();
+      const items = card.querySelectorAll('.project-features li');
+      items.forEach(li => {
+        const item = document.createElement('li');
+        item.textContent = li.textContent.trim();
+        dlg.features.appendChild(item);
+      });
+      dlg.featuresWrap.hidden = items.length === 0;
+
+      // Technology groups (cloned from the card, so labels stay accurate)
+      dlg.tech.replaceChildren();
+      const groups = card.querySelector('.project-tech-groups');
+      if (groups) dlg.tech.appendChild(groups.cloneNode(true));
+
+      // Real links only (the card's own http(s) anchors)
+      dlg.links.replaceChildren();
+      card.querySelectorAll('.project-links a[href^="http"]').forEach(link => {
+        const a = document.createElement('a');
+        a.href = link.href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'btn btn-ghost btn-sm';
+        a.textContent = link.textContent.trim() + ' ↗';
+        dlg.links.appendChild(a);
+      });
+      dlg.links.hidden = dlg.links.children.length === 0;
+    }
+
+    document.querySelectorAll('[data-project-details]').forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.project-card');
+        if (!card) return;
+        lastTrigger = button;
+        fillProjectDialog(card);
+        if (typeof projectDialog.showModal === 'function') projectDialog.showModal();
+        else projectDialog.setAttribute('open', '');
+        const scroller = projectDialog.querySelector('.project-dialog-content');
+        if (scroller) scroller.scrollTop = 0;
+        bodyEl.classList.add('modal-open');
+      });
+    });
+
+    const closeProjectDialog = projectDialog.querySelector('.dialog-close');
+    const closeModal = () => { if (typeof projectDialog.close === 'function') projectDialog.close(); else projectDialog.removeAttribute('open'); };
+    if (closeProjectDialog) closeProjectDialog.addEventListener('click', closeModal);
+
+    // Click on the dimmed backdrop closes the dialog
+    projectDialog.addEventListener('click', event => { if (event.target === projectDialog) closeModal(); });
+
+    // Escape is handled natively by <dialog>; this runs for every way of closing
+    projectDialog.addEventListener('close', () => {
+      bodyEl.classList.remove('modal-open');
+      if (lastTrigger && document.contains(lastTrigger)) lastTrigger.focus();
+    });
+  }
+
+
+  /* -------------------------------------------------------------------
+     Email actions.
+     mailto: links do nothing on computers with no default mail app, so on
+     desktop the Email card opens Gmail's compose window (new tab) instead.
+     On phones the normal mailto: link is kept, because the phone's mail app
+     handles it. "Open in mail app" and "Copy address" are always available.
+     Nothing is sent automatically: the visitor presses Send in their mail.
+  ------------------------------------------------------------------- */
+  const emailCard = document.querySelector('[data-email-card]');
+  if (emailCard) {
+    const isPhone = /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent) ||
+      (navigator.maxTouchPoints > 1 && window.matchMedia('(pointer: coarse)').matches);
+    emailCard.addEventListener('click', event => {
+      if (isPhone) return; // let the browser follow the mailto: link
+      event.preventDefault();
+      const params = new URLSearchParams({
+        view: 'cm', fs: '1',
+        to: emailCard.dataset.emailTo,
+        su: emailCard.dataset.emailSubject || ''
+      });
+      window.open('https://mail.google.com/mail/?' + params.toString(), '_blank', 'noopener,noreferrer');
+    });
+  }
+
+  const copyEmailBtn = document.querySelector('[data-copy-email]');
+  const copyStatus = document.querySelector('[data-copy-status]');
+  if (copyEmailBtn && copyStatus) {
+    let statusTimer;
+    const say = message => {
+      copyStatus.textContent = message;
+      clearTimeout(statusTimer);
+      statusTimer = setTimeout(() => { copyStatus.textContent = ''; }, 2500);
+    };
+    copyEmailBtn.addEventListener('click', async () => {
+      const address = copyEmailBtn.dataset.copyEmail;
+      try {
+        await navigator.clipboard.writeText(address);
+        say('Copied!');
+      } catch (err) {
+        try {
+          const temp = document.createElement('textarea');
+          temp.value = address;
+          temp.setAttribute('readonly', '');
+          temp.style.cssText = 'position:fixed;opacity:0;';
+          document.body.appendChild(temp);
+          temp.select();
+          const done = document.execCommand('copy');
+          temp.remove();
+          say(done ? 'Copied!' : 'Could not copy. Please type it: ' + address);
+        } catch (e2) {
+          say('Could not copy. Please type it: ' + address);
+        }
+      }
+    });
+  }
 
   /* -------------------------------------------------------------------
      9. FOOTER YEAR
@@ -369,6 +522,68 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       card.addEventListener('pointerleave', () => { card.style.transform = ''; });
     });
+  }
+
+
+
+  /* -------------------------------------------------------------------
+     10. LIVE INDIA CLOCKS (exactly two: Home + Contact)
+     All visible clocks are marked with [data-ist-clock] and driven by ONE timer,
+     so intervals can never stack up. The time zone is forced to
+     Asia/Kolkata, so it is correct whatever the visitor's device says.
+     The timer re-aligns to the next whole second (no drift) and is
+     cleared on pagehide.
+  ------------------------------------------------------------------- */
+  const istClocks = document.querySelectorAll('[data-ist-clock]');
+
+  if (istClocks.length) {
+    let timeFmt, dateFmt;
+    try {
+      timeFmt = new Intl.DateTimeFormat('en-IN', {
+        timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+      });
+      dateFmt = new Intl.DateTimeFormat('en-IN', {
+        timeZone: 'Asia/Kolkata', weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+      });
+    } catch (err) {
+      timeFmt = dateFmt = null; // very old browser without time zone support
+    }
+
+    const part = (parts, type) => (parts.find(p => p.type === type) || {}).value || '';
+    let clockTimer = null;
+
+    function tickClocks() {
+      if (!timeFmt) {
+        istClocks.forEach(c => { c.querySelector('[data-ist-date]').textContent = 'Time unavailable'; });
+        return;
+      }
+      const now = new Date();
+      const t = timeFmt.formatToParts(now);
+      const d = dateFmt.formatToParts(now);
+      const timeText = `${part(t, 'hour')}:${part(t, 'minute')}:${part(t, 'second')} ${part(t, 'dayPeriod').toUpperCase()}`;
+      const dateText = `${part(d, 'weekday')}, ${part(d, 'day')} ${part(d, 'month')} ${part(d, 'year')}`;
+
+      istClocks.forEach(clock => {
+        const timeEl = clock.querySelector('[data-ist-time]');
+        const dateEl = clock.querySelector('[data-ist-date]');
+        if (timeEl.textContent !== timeText) timeEl.textContent = timeText;
+        if (dateEl.textContent !== dateText) dateEl.textContent = dateText;
+      });
+    }
+
+    function scheduleClockTick() {
+      clearTimeout(clockTimer);          // never more than one pending timer
+      tickClocks();
+      clockTimer = setTimeout(scheduleClockTick, 1000 - (Date.now() % 1000) + 5);
+    }
+
+    scheduleClockTick();
+
+    // Stop while the tab is hidden, resync instantly when it comes back
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { clearTimeout(clockTimer); } else { scheduleClockTick(); }
+    });
+    window.addEventListener('pagehide', () => clearTimeout(clockTimer));
   }
 
 });

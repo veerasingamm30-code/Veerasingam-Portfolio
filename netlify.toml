@@ -1,0 +1,4 @@
+[build]
+  publish = "."
+
+# This portfolio is a static HTML/CSS/JavaScript site and has no build step.
