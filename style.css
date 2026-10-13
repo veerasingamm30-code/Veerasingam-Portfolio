@@ -1038,7 +1038,15 @@ a.contact-line:hover {
   text-transform: uppercase;
   color: var(--neon-blue);
 }
-.about-text .about-lead { color: var(--text-primary); font-size: 1.14rem; line-height: 1.65; font-weight: 500; }
+/* Shared typography for all three About paragraphs (Right now / How I learn / Why "Play Bold") */
+.about-text .about-lead {
+  font-family: inherit;
+  font-size: 1.14rem;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: normal;
+  color: var(--text-primary);
+}
 .fact-card { position: relative; overflow: hidden; }
 .fact-card::before { content: ''; position: absolute; left: 0; top: 18%; bottom: 18%; width: 3px; border-radius: 0 3px 3px 0; background: var(--gradient-main); }
 .fact-value { line-height: 1.4; overflow-wrap: anywhere; }
@@ -1205,6 +1213,21 @@ body.light-mode .contact-alt-link { color: #0a6f93; }
 .contact-alt-status { font-size: .8rem; color: var(--text-muted); }
 
 .footer-url { margin-top: .4rem; font-family: var(--font-mono); font-size: .8rem; overflow-wrap: anywhere; }
+.footer-url-emoji { margin-right: .5rem; font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif; }
 .footer-url a { color: var(--neon-blue); border-bottom: 1px dashed transparent; }
 .footer-url a:hover { border-bottom-color: var(--neon-blue); }
 body.light-mode .footer-url a { color: #0a6f93; }
+
+/* ---- H. SOCIAL ICONS + LINKEDIN ----------------------------------------- */
+.hero-social { display: flex; gap: .8rem; margin-top: 1.4rem; }
+.social-icon {
+  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px;
+  border: 1px solid var(--surface-border); background: var(--surface); color: var(--text-primary);
+  transition: transform var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.social-icon:hover { transform: translateY(-3px); color: var(--neon-blue); border-color: var(--neon-blue); box-shadow: 0 8px 24px rgba(0,212,255,.2); }
+.social-icon:active { transform: translateY(0) scale(.94); }
+.social-icon:focus-visible { outline: 2px solid var(--neon-blue); outline-offset: 3px; }
+body.light-mode .social-icon:hover { color: #0a6f93; border-color: #0a6f93; }
+.contact-card-linkedin .contact-card-icon { color: var(--text-primary); }
+.contact-value { overflow-wrap: anywhere; }
